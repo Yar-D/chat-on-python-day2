@@ -15,7 +15,7 @@ class ConnectionHandler(LineOnlyReceiver):
     login: str                  #  Тут логин пользователя будет
     login_try_count: int = 3    # Даем три попытки ввести логин
 
-    def SendToAll(self, message, ReallyAll=False):
+    def SendToAll(self, message, ReallyAll = True):  # для консольного telnet было False
         for user in self.factory.clients:
             if ReallyAll or (user is not self):  # кроме написавшего
                 user.sendLine(message.encode())
